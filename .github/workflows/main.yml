@@ -4,24 +4,19 @@
 
 ---
 name: Mr Coxall's Super Linter
-
 on: [push, pull_request]
-
 jobs:
   run-linters:
     name: GitHub's Super Linter
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out Git repository
         uses: actions/checkout@master
-
       - name: Prettify code
         uses: creyD/prettier_action@master
         with:
           # run Prettier and change any code that needs fixing, before next section
           prettier_options: --write **/*.{html,css,js,md}
-
       - name: Run GitHub Super Linter
         uses: github/super-linter@master
         env:
